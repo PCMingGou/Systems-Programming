@@ -4,10 +4,10 @@ PART 2:
 5. Because the program runs into the infinite loop of printC, the new threads cannot be created.
 
 PART 4:
-													|	system time	|	user time	|	real time	
-pthread_mutex							|		1.284s	  |	 1.961s		|		1.693s
-spin_lock(with yield)			|	  0.060s		|  0.152s		|   0.140s
-spin_lock(without yield)	|		0.000s		|	 0.315s		|   0.167s
+				|	system time	|	user time	|	real time	
+pthread_mutex			|	 1.284s	  	|	 1.961s		|	 1.693s
+spin_lock(with yield)		|	 0.060s		|  	 0.152s		|   	 0.140s
+spin_lock(without yield)	|	 0.000s		|	 0.315s		|   	 0.167s
 
 1. The user time and real time dropped a lot when a thread_yield is implemented, because the thread will give up the CPU so other process can run.
 
