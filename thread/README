@@ -1,0 +1,18 @@
+PART 2:
+3. The thr1 output is letters A,B,C being printed repeatedly in random order, sometimes the same letter is printed multiple times.
+
+5. Because the program runs into the infinite loop of printC, the new threads cannot be created.
+
+PART 4:
+													|	system time	|	user time	|	real time	
+pthread_mutex							|		1.284s	  |	 1.961s		|		1.693s
+spin_lock(with yield)			|	  0.060s		|  0.152s		|   0.140s
+spin_lock(without yield)	|		0.000s		|	 0.315s		|   0.167s
+
+1. The user time and real time dropped a lot when a thread_yield is implemented, because the thread will give up the CPU so other process can run.
+
+2. The count_spin takes less time than count, because a spin_lock can make thread spin busy waiting until lock is released, instead of putting thread in waiting state.
+
+PART 6:
+3735928559; ./buffer `printf "adasasdadsadaass\xef\xbe\xad\xde"`
+Because the str was assigned a space to store 15 chars, if you exceed the boundary, the buffer will overflow. The exceeded part will be stored into set_me.
